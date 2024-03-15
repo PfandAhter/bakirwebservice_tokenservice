@@ -1,0 +1,34 @@
+server:
+  port: 8079
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/user_service
+    username: springstudent
+    password: springstudent
+  jpa:
+    properties:
+      javax:
+        persistence:
+          validation:
+            mode: none
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    application:
+      name: token-service
+  main:
+    banner-mode: off
+
+app:
+  routesMicroservices:
+    userService:
+      findByUsername: http://localhost:8082/userservice/findbyusername
+
+  routesController:
+    requestmapping:
+      tokenServiceController: /tokenservice
+    token:
+      generateToken: /generatetoken
+      extractUsername: /extractusername
+  jwtSecret: S5arZ8qX8Anvk60LIHdGKZiGyLAyxW+LU1Xw2H4R6Uu1ndlUNPqhpVuKtFsfFvA+
+  jwtCryptoSecret : sBnlg0BGosgPMQju
